@@ -4,6 +4,10 @@ import './App.css'
 function App() {
     const [userimg , setUserimg] = useState("rock")
 
+    const [finalresult , setFinalresult] = useState("Let's see who wins")
+
+    const [turn , setTurn] = useState("No one got a point")
+
     let img_arr = ["rock","paper","scissors"]
   
     let num =   Math.round(Math.random()*2)
@@ -11,28 +15,34 @@ function App() {
     let computerimg_name  = img_arr[num]
     
 
-    const [userPoint , setUserPoint] = useState(0)
+    let [userPoint , setUserPoint] = useState(0)
 
-    const [computerPoint,setComputerPoint] = useState(0)
+    let [computerPoint,setComputerPoint] = useState(0)
 
     let [val , setVal] = useState(0)
     
-    useEffect(()=>{
+    useCallback(()=>{
+
+     
+
        if(val >= 1){
-          
-          let comboMoves = userimg + computerimg_name
+       
+         
+       let comboMoves = userimg + computerimg_name
 
      if(comboMoves === 'scissorspaper' || comboMoves === 'rockscissors' || comboMoves === 'paperrock' ){
           setUserPoint( userPoint => (userPoint+1))
+          setTurn("User got the point")
      }
 
      if(comboMoves === 'rockrock' || comboMoves === 'paperpaper' || comboMoves === 'scissorsscissors'){
-         return 
+         setTurn("No one get's the point")
      }
 
       
      if(comboMoves === 'paperscissors' || comboMoves === 'scissorsrock' || comboMoves === 'rockpaper'){
         setComputerPoint( computerPoint => (computerPoint+1))
+        setTurn("Computer got the point")
      }
 
    }
@@ -43,7 +53,7 @@ function App() {
    <>
          <h1 className='text-center text-3xl mt-4'> Rock Paper Scissors </h1>
          <div className='bg-black-900 flex justify-around mt-14'>
-          <p>  User points : {userPoint} </p>
+          <p>  User Points : {userPoint} </p>
           <p>  Computer Points : {computerPoint}  </p>
          </div>
 
@@ -74,12 +84,12 @@ function App() {
 
        
 
-         <p className='text-left'>Turn Result: Lorem ipsum dolor sit amet. </p>
-         <p className='text-left'>Final result: Lorem ipsum dolor, sit amet consectetur adipisicing. </p>
+         <p className='text-left'>Turn Result: {turn} </p>
+         <p className='text-left'>Final result: {finalresult} </p>
          
    
     <p className='m-4'>{userimg + computerimg_name}</p>
-   
+    
 
    </>
   )
