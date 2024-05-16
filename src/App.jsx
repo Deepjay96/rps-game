@@ -2,35 +2,41 @@ import React , { useState , useEffect, useCallback } from 'react'
 import './App.css'
 
 function App() {
-    const [userimg , setUserimg] = useState("rock")
+    const [userchoice , setUserchoice] = useState("rock")
+
+    const [computerchoice , setComputerchoice ] = useState("rock")   
 
     const [finalresult , setFinalresult] = useState("Let's see who wins")
 
     const [turn , setTurn] = useState("No one got a point")
 
     let img_arr = ["rock","paper","scissors"]
-  
-    let num =   Math.round(Math.random()*2)
-
-    let computerimg_name  = img_arr[num]
-    
-
+   
     let [userPoint , setUserPoint] = useState(0)
 
     let [computerPoint,setComputerPoint] = useState(0)
 
     let [val , setVal] = useState(0)
-
+ 
+    let computerimg_name   
+    
+    
+   
     function rps(){
       if(val >= 1){
+     computerimg_name = img_arr[Math.round(Math.random()*2)] 
+         
+      setComputerchoice(computerimg_name)
                
-      let comboMoves = userimg + computerimg_name
+      let comboMoves = userchoice + computerimg_name
  
       if(comboMoves === 'scissorspaper' || comboMoves === 'rockscissors' || comboMoves === 'paperrock' ){
-           setUserPoint( userPoint => (userPoint+1))
+          // console.log(userPoint+1)
+           setUserPoint(userPoint+1 )
            setTurn("User got the point")
       }else  if(comboMoves === 'paperscissors' || comboMoves === 'scissorsrock' || comboMoves === 'rockpaper'){
-        setComputerPoint( computerPoint => (computerPoint+1))
+        //  console.log(computerPoint+1)
+        setComputerPoint(computerPoint+1)
         setTurn("Computer got the point")
      }else if(comboMoves === 'rockrock' || comboMoves === 'paperpaper' || comboMoves === 'scissorsscissors'){
       setTurn("No one get's the point")
@@ -38,10 +44,12 @@ function App() {
 
     }
     }
-    
+   
+
     useEffect(()=>{
-           rps()      
-    },[userimg , computerimg_name])
+      rps()      
+    },[userchoice , computerchoice])
+    
    
 
   return (
@@ -56,23 +64,26 @@ function App() {
               
              <div className='flex justify-center'>
                  
-                 <img src={`public/images/${userimg}.png`} className='user-hand' width={100} height={100}  alt="" />
-                 <img src={`public/images/${computerimg_name}.png`} width={100} height={100} alt="" />
+                 <img src={`public/images/${userchoice}.png`} className='user-hand' width={100} height={100}  alt="" />
+                 <img src={`public/images/${computerchoice}.png`} width={100} height={100} alt="" />
               </div>  
 
 
       <div className='flex justify-center'>
      <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-4' onClick={()=> {
-          setUserimg("rock")
-          setVal(val+1)
+          setUserchoice("rock")
+          setVal(1)
+           
      }} >rock</button>
       <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-4' onClick={()=>{
-          setUserimg("paper")
-          setVal(val+1)
+          setUserchoice("paper")
+          setVal(1)
+               
       }}>paper</button>
      <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-4' onClick={()=>{
-        setUserimg("scissors")
-        setVal(val+1)
+        setUserchoice("scissors")
+        setVal(1)
+        
      }}>scissors</button>
       </div>
          </div>
@@ -83,7 +94,7 @@ function App() {
          <p className='text-left'>Final result: {finalresult} </p>
          
    
-    <p className='m-4'>{userimg + computerimg_name}</p>
+    <p className='m-4'>{userchoice + computerchoice}</p>
     
 
    </>
