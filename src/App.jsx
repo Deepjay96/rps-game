@@ -22,7 +22,7 @@ function App() {
     
     
    
-    function rps(){
+    const rps = useCallback(() => {
       if(val >= 1){
      computerimg_name = img_arr[Math.round(Math.random()*2)] 
          
@@ -43,12 +43,12 @@ function App() {
       }
 
     }
-    }
+    }, [userchoice, computerchoice])
    
 
     useEffect(()=>{
       rps()      
-    },[userchoice , computerchoice])
+    },[rps])
     
    
 
