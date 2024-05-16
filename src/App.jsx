@@ -20,33 +20,28 @@ function App() {
     let [computerPoint,setComputerPoint] = useState(0)
 
     let [val , setVal] = useState(0)
-    
-    useCallback(()=>{
 
-     
-
-       if(val >= 1){
-       
-         
-       let comboMoves = userimg + computerimg_name
-
-     if(comboMoves === 'scissorspaper' || comboMoves === 'rockscissors' || comboMoves === 'paperrock' ){
-          setUserPoint( userPoint => (userPoint+1))
-          setTurn("User got the point")
-     }
-
-     if(comboMoves === 'rockrock' || comboMoves === 'paperpaper' || comboMoves === 'scissorsscissors'){
-         setTurn("No one get's the point")
-     }
-
-      
-     if(comboMoves === 'paperscissors' || comboMoves === 'scissorsrock' || comboMoves === 'rockpaper'){
+    function rps(){
+      if(val >= 1){
+               
+      let comboMoves = userimg + computerimg_name
+ 
+      if(comboMoves === 'scissorspaper' || comboMoves === 'rockscissors' || comboMoves === 'paperrock' ){
+           setUserPoint( userPoint => (userPoint+1))
+           setTurn("User got the point")
+      }else  if(comboMoves === 'paperscissors' || comboMoves === 'scissorsrock' || comboMoves === 'rockpaper'){
         setComputerPoint( computerPoint => (computerPoint+1))
         setTurn("Computer got the point")
-     }
+     }else if(comboMoves === 'rockrock' || comboMoves === 'paperpaper' || comboMoves === 'scissorsscissors'){
+      setTurn("No one get's the point")
+      }
 
-   }
-    },[userimg])
+    }
+    }
+    
+    useEffect(()=>{
+           rps()      
+    },[userimg , computerimg_name])
    
 
   return (
@@ -97,6 +92,28 @@ function App() {
 
 export default App
 
+
+// import React, { useEffect, useState } from 'react'
+
+// export default function App() {
+
+//   const [count , setCount] = useState(0)
+  
+//   useEffect(()=>{
+//     alert("this is in alert")
+//   },[])
+
+//   return (
+//     <div>
+//           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={(()=>{
+//                setCount(count+1) 
+//           })}>counter {count}</button>  <br /><br />
+//           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={(()=>{
+//                setCount(count+1) 
+//           })}>counter {count}</button>
+//     </div>
+//   )
+// }
 
 
 
