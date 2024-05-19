@@ -79,33 +79,33 @@ function App() {
   return (
     <>
       <h1 className="text-center text-4xl mt-4 font-bold">
-        {" "}
-        Rock Paper Scissors{" "}
+        
+        Rock Paper Scissors
       </h1>
       <div className="bg-black-900 flex justify-around mt-14">
         <p>
-          {" "}
-          <span className="text-2xl font-bold"> User Points : </span>{" "}
-          <span className="text-2xl font-bold"> {userPoint} </span>{" "}
+          
+          <span className="text-2xl font-bold"> User Points : </span>
+          <span className="text-2xl font-bold"> {userPoint} </span>
         </p>
         <p>
-          {" "}
-          <span className="text-2xl font-bold"> Computer Points : </span>{" "}
-          <span className="text-2xl font-bold"> {computerPoint} </span>{" "}
+          
+          <span className="text-2xl font-bold"> Computer Points : </span>
+          <span className="text-2xl font-bold"> {computerPoint} </span>
         </p>
       </div>
 
       <div className="mt-8">
         <div className="flex justify-center">
           <img
-            src={`public/images/${userchoice}.png`}
+            src={`public/${userchoice}.png`}
             className="user-hand"
             width={100}
             height={100}
             alt=""
           />
           <img
-            src={`public/images/${computerchoice}.png`}
+          src={`public/${computerchoice}.png`}
             width={100}
             height={100}
             alt=""
@@ -153,13 +153,13 @@ function App() {
 
       <div className="flex items-center justify-center flex-col">
         <p className="m-2">
-          {" "}
-          <span className="text-2xl font-bold"> Turn Result: </span>{" "}
+          
+          <span className="text-2xl font-bold"> Turn Result: </span>
           <span className="text-2xl font-bold"> {turn} </span>
         </p>
         <p className="m-2">
-          <span className="text-2xl font-bold"> Final result: </span>{" "}
-          <span className="text-2xl font-bold"> {finalresult} </span>{" "}
+          <span className="text-2xl font-bold"> Final result: </span>
+          <span className="text-2xl font-bold"> {finalresult} </span>
         </p>
       </div>
 
